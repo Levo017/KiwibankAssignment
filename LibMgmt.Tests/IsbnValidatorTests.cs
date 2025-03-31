@@ -1,13 +1,14 @@
 ﻿using LibMgmt.Services;
+using LibMgmt.Services.implementations;
 
 namespace LibMgmt.Tests
 {
     public class IsbnValidatorTests
     {
         [Theory]
-        [InlineData("978-7-6499-1995-5", true)]
-        [InlineData("978-7-6499-xxxx-5", false)]
-        public async Task Validate_ISBN13(string toValidate, bool expectation)
+        [InlineData("978-1-86197-876-9", true)]
+        [InlineData("978-1-86197-xxx-9 ", false)]
+        public async Task Validate_ISBN(string toValidate, bool expectation)
         {
             var sub = new IsbnValidator();
             var result = sub.IsValid(toValidate);

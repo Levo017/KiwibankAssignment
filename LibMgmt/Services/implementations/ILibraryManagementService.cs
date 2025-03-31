@@ -1,19 +1,10 @@
 ﻿using LibMgmt.Models;
 using LibMgmt.Repositories;
-using System.Diagnostics.CodeAnalysis;
+using LibMgmt.Repositories.interfaces;
+using LibMgmt.Services.interfaces;
 
-namespace LibMgmt.Services
+namespace LibMgmt.Services.implementations
 {
-
-    public interface ILibraryManagementService
-    {
-        Task<ServiceResult<Book>> AddBook(Book book);
-        Task<ServiceResult<Book>> UpdateBook(Book book);
-        Task<ServiceResult<bool?>> DeleteBook(string isbn);
-        Task<ServiceResult<IEnumerable<Book>>> ListAllBooks();
-        Task<ServiceResult<Book>> GetBook(string isbn);
-    }
-
     public class LibraryManagementService : ILibraryManagementService
     {
         public const long INVALID_ISBN = 1000001;
@@ -24,10 +15,10 @@ namespace LibMgmt.Services
 
         private readonly IBookRepo _bookRepo;
         private readonly IIsbnValidator _isbnValidator;
-        
+
         public LibraryManagementService(IBookRepo bookRepo, IIsbnValidator isbnValidator)
         {
-            this._bookRepo = bookRepo;
+            _bookRepo = bookRepo;
             _isbnValidator = isbnValidator;
         }
 
@@ -55,7 +46,7 @@ namespace LibMgmt.Services
                 if (result.Result)
                 {
                     return CreateServiceResult<bool?>(true);
-                } 
+                }
                 else
                 {
                     var errorCode = result.Error == RepositoryErrors.KeyNotExist ? ISBN_NOT_EXIST : REPOSITORY_ERROR;

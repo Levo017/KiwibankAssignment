@@ -1,6 +1,8 @@
 using LibMgmt.Models;
 using LibMgmt.Repositories;
-using LibMgmt.Services;
+using LibMgmt.Repositories.interfaces;
+using LibMgmt.Services.implementations;
+using LibMgmt.Services.interfaces;
 using Moq;
 
 namespace LibMgmt.Tests

@@ -1,12 +1,14 @@
 ﻿using LibMgmt.Models;
-using LibMgmt.Repositories;
-using LibMgmt.Services;
+using LibMgmt.Repositories.implementations;
+using LibMgmt.Repositories.interfaces;
+using LibMgmt.Services.implementations;
+using LibMgmt.Services.interfaces;
 using LibMgmt.UI;
 using Microsoft.Extensions.DependencyInjection;
 
 internal class Program
 {
-    private static IIsbnValidator _isbnValidator;
+    private static IIsbnValidator? _isbnValidator;
 
     private static async Task Main(string[] args)
     {

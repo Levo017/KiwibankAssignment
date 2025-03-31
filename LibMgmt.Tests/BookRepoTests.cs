@@ -1,5 +1,6 @@
 ﻿using LibMgmt.Models;
 using LibMgmt.Repositories;
+using LibMgmt.Repositories.implementations;
 
 namespace LibMgmt.Tests
 {
