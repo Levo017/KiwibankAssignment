@@ -9,7 +9,7 @@ Library Management System is a console app that use in-memory dictionary to stor
    ```bash
    dotnet run LibMgmt.csproj
    ```
-5. Should shown on the command prompt that the project is built, and console app start up.
+5. Should on the command prompt the project is built, and console app start up.
 
 # Code File Structure
 * `LibMgmt.csproj`
@@ -38,5 +38,7 @@ Library Management System is a console app that use in-memory dictionary to stor
     * Wrap actual result into these generic result allow repository / service layer to provide more info when operation is unsuccessful.  Although not shown in this assignment, the upstream caller can choose to take different error-handling action depending on the error info provided.
     * For `RepositoryResult`, all possible errors are categorised in `RepositoryErrors` enum.  This is because normally there is a finite number of failure reasons for repository error, use it in an enum allow its caller, often services, to easily decide what is wrong and how to proceed gracefully.
     * For `ServiceResult`, errors are captured and presented as error code with `long` data type. Because application logic services' error can be more complex, I prefer to use `long` to uniquely identify them.  Caller services / orchestrators can then use an errorcode parser / lookup service to understand it better and decide how to proceed.
-* Console UI logic flow in `UIHelpers` class ( **Known Limitation** )
+* **Known Limitation**:  Console UI logic flow in `UIHelpers` class 
     * Ideally we can have a Model class to abstract away the user interaction logic, like when to show options, when to show errors, etc.  Then we can have some UnitTest done on the Model class.  Didn't implement this way as it's a little overkill for demo purpose.
+* **Known Limitation**: Not have a CI pipeline
+    * Ideally the `main` branch should be protected by a CI pipeline that as a minimum ensures the unit tests are passing.  Didn't complete it due to time constraint.
