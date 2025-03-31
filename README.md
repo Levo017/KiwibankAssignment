@@ -9,7 +9,7 @@ Library Management System is a console app that use in-memory dictionary to stor
    ```bash
    dotnet run LibMgmt.csproj
    ```
-5. Should on the command prompt the project is built, and console app start up.
+5. Should shown on the command prompt that the project is built, and console app start up.
 
 # Code File Structure
 * `LibMgmt.csproj`
